@@ -19,15 +19,15 @@ class test_add_group(unittest.TestCase):
         success = True
         wd = self.wd
         wd.get("http://localhost/addressbook/group.php")
+        wd.find_element_by_id("content").click()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys("admin")
-        wd.find_element_by_id("LoginForm").click()
         wd.find_element_by_name("pass").click()
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys("secret")
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
-        wd.find_element_by_link_text("grupy").click()
+        wd.find_element_by_link_text("groups").click()
         wd.find_element_by_name("new").click()
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
@@ -40,7 +40,7 @@ class test_add_group(unittest.TestCase):
         wd.find_element_by_name("group_footer").send_keys("test")
         wd.find_element_by_name("submit").click()
         wd.find_element_by_link_text("group page").click()
-        wd.find_element_by_link_text("Wyloguj się").click()
+        wd.find_element_by_link_text("Logout").click()
         self.assertTrue(success)
     
     def tearDown(self):
