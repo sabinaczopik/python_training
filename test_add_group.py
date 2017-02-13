@@ -85,9 +85,9 @@ class test_add_contact(unittest.TestCase):
         wd = self.wd 
         self.open_home_page(wd)
         self.log_in(wd,username = "admin", password = "secret")
-        self.create_new_contact(wd, Contact(first_name = "Sabina", last_name = "test", company = "Pewex",
+        self.create_contact(wd, Contact(first_name = "Sabina", last_name = "test", company = "Pewex",
                                 address = "osiedle", phone_home = "123456789", e_mail = "sabina@sabina.pl",
-                                year = "2016", address_2 = "Adress2"))
+                                year = "2016", address_1 = "Adress1"))
         self.return_to_homepage(wd)
         self.log_out(wd)
 
@@ -97,7 +97,7 @@ class test_add_contact(unittest.TestCase):
     def return_to_homepage(self, wd):
         wd.find_element_by_link_text("home page").click()
 
-    def create_new_contact(self, wd, contact):
+    def create_contact(self, wd, contact):
         # init contact creations
         wd.find_element_by_link_text("add new").click()
         # fill contact form
@@ -130,7 +130,7 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("byear").send_keys(contact.year)
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
-        wd.find_element_by_name("address2").send_keys(contact.address_2)
+        wd.find_element_by_name("address2").send_keys(contact.address_1)
         # submit contact creations
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
