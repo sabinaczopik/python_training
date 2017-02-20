@@ -1,15 +1,7 @@
 # -*- coding: utf-8 -*-
-import pytest
 
-from fixture.application import Application
 from model.contact import Contact
 
-
-@pytest.fixture
-def app(request):
-    fixtura = Application()
-    request.addfinalizer(fixtura.destroy)
-    return fixtura
 
 def test_add_contact(app):
     app.navigation.open_home_page()
@@ -19,4 +11,5 @@ def test_add_contact(app):
                                year = "2016", address_1 = "Adress1"))
     app.navigation.return_to_homepage()
     app.session.log_out()
+
 
