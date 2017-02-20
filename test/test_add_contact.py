@@ -13,20 +13,10 @@ def app(request):
 
 def test_add_contact(app):
     app.open_home_page()
-    app.log_in(username = "admin", password = "secret")
+    app.session.log_in(username = "admin", password = "secret")
     app.create_contact(Contact(first_name = "Sabina", last_name = "test", company = "Pewex",
                                 address = "osiedle", phone_home = "123456789", e_mail = "sabina@sabina.pl",
                                 year = "2016", address_1 = "Adress1"))
     app.return_to_homepage()
-    app.log_out()
+    app.session.log_out()
 
-
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    unittest.main()
