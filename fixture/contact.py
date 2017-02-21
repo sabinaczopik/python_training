@@ -40,3 +40,22 @@ class ContactHelper:
         wd.find_element_by_name("address2").send_keys(contact.address_1)
         # submit contact creations
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+
+
+    def edit_first_contact(self):
+        wd = self.app.wd
+        # select first contact
+        wd.find_element_by_css_selector('[title="Edit"]').click()
+        #init update
+        wd.find_element_by_css_selector('[name="firstname"]').clear()
+        wd.find_element_by_css_selector('[name="firstname"]').send_keys('Modyfikacja')
+        #submit update
+        wd.find_element_by_name("update").click()
+
+    def delete_first_contact(self):
+        wd = self.app.wd
+        # select first contact
+        wd.find_element_by_css_selector('[name="selected[]"]').click()
+        #submit update
+        wd.find_element_by_css_selector('[value="Delete"]').click()
+        wd.switch_to_alert().accept()

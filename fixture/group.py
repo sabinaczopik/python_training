@@ -23,6 +23,19 @@ class GroupHelper:
         wd.find_element_by_name("submit").click()
         self.return_to_groupe_page()
 
+    def edit_first_group(self):
+        wd = self.app.wd
+        self.open_groups()
+        #select first group
+        wd.find_element_by_css_selector('[name*="selected"]').click()
+        #init edite
+        wd.find_element_by_css_selector('[name="edit"]').click()
+        wd.find_element_by_css_selector('[name="group_name"]').clear()
+        wd.find_element_by_css_selector('[name="group_name"]').send_keys('Edit group')
+        # submit update
+        wd.find_element_by_name("update").click()
+        self.return_to_groupe_page()
+
     def delete_first_group(self):
         wd = self.app.wd
         self.open_groups()
