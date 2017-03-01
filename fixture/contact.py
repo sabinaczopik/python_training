@@ -46,10 +46,10 @@ class ContactHelper:
         wd = self.app.wd
         # select first contact
         wd.find_element_by_css_selector('[title="Edit"]').click()
-        #init update
+        # init update
         wd.find_element_by_css_selector('[name="firstname"]').clear()
         wd.find_element_by_css_selector('[name="firstname"]').send_keys('Modyfikacja')
-        #submit update
+        # submit update
         wd.find_element_by_name("update").click()
 
     def delete_first_contact(self):
