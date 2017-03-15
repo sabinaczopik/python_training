@@ -75,12 +75,27 @@ class ContactHelper:
         return len(wd.find_elements_by_css_selector('[name="selected[]"]'))
 
     contact_cache = None
+
     def get_contact_list(self):
         if self.contact_cache is None:
             wd = self.app.wd
             self.contact_cache = []
-            for element in wd.find_elements_by_css_selector('tr[name="entry"]'):
-                email = element.find_element_by_name("selected[]").get_attribute("accept")
-                id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.contact_cache.append(Contact(e_mail=email, id=id))
+            for row in wd.find_elements_by_name("entry"):
+                cells = row.find_elements_by_tag_name('td')
+                first_name = cells[2].text
+                last_name = cells[1].text
+                id = cells[0].find_element_by_tag_name('input').get_attribute('value')
+                self.contact_cache.append(Contact(first_name=first_name, last_name=last_name, id=id))
         return list(self.contact_cache)
+
+    def open_contact_to_edit_by_index(self, index):
+        wd = self.app.wd
+        row = wd.find_elements_by_name('entry')[index]
+        cell = row.find_elements_by_tag_name('td')[7]
+        cell.find_element_by_tag_name('a').click()
+
+    def open_contact_view_by_index(self, index):
+        wd = self.app.wd
+        row = wd.find_elements_by_name('entry')[index]
+        cell = row.find_elements_by_tag_name('td')[6]
+        cell.find_element_by_tag_name('a').click()
