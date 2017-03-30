@@ -17,7 +17,6 @@ class GroupHelper:
         self.return_to_groupe_page()
         self.group_cache = None
 
-
     def fill_group_form(self, group):
         self.change_field_value("group_name", group.name)
         self.change_field_value("group_header", group.header)
