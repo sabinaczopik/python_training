@@ -39,7 +39,6 @@ class ContactHelper:
             wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").click()
         self.change_field_value("byear", contact.year)
 
-
     def change_field_value(self, field_name, text):
         wd = self.app.wd
         if text is not None:
@@ -143,4 +142,3 @@ class ContactHelper:
         secondaryphone = re.search("P: (.*)", text).group(1)
         return Contact(id=id, phone_home=phone_home,mobilephone=mobilephone,
                        secondaryphone=secondaryphone, workphone=workphone)
-

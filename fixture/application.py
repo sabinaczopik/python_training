@@ -28,6 +28,7 @@ class Application:
             return True
         except:
             return False
+
     def open_home_page(self):
         wd = self.app.wd
         wd.get(self.base_url)
